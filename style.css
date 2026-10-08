@@ -24,8 +24,8 @@
   --sans: "Inter", Arial, sans-serif;
 
   --max-width: 1180px;
-  --radius: 4px;
-  --shadow: 0 18px 45px rgba(23, 25, 22, 0.07);
+  --radius: 5px;
+  --shadow: 0 18px 45px rgba(23, 25, 22, 0.09);
 }
 
 
@@ -289,13 +289,55 @@ button {
 
 
 /* =========================================================
-   HERO FACTS — EDITORIAL SIDE PANEL
+   HERO WRITER BRAND MARK
    ========================================================= */
 
 .hero-facts {
+  position: relative;
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
+  padding-top: 82px;
 }
+
+.hero-facts::before {
+  content: "SY";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--green);
+
+  font-family: var(--serif);
+  font-size: 25px;
+  color: var(--green);
+}
+
+.hero-facts::after {
+  content: "SEO  ·  CONTENT  ·  WORDS";
+  position: absolute;
+  top: 21px;
+  left: 75px;
+
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  color: var(--muted);
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   HERO FACTS
+   ========================================================= */
 
 .hero-fact {
   padding: 22px 0;
@@ -534,8 +576,21 @@ button {
    ========================================================= */
 
 #portfolio {
-  background: var(--paper);
+  background: #e7e4db;
 }
+
+#portfolio .section-heading {
+  color: var(--ink);
+}
+
+#portfolio .section-intro {
+  color: #5d625c;
+}
+
+
+/* =========================================================
+   FILTER TABS
+   ========================================================= */
 
 .filter-tabs {
   display: flex;
@@ -545,7 +600,7 @@ button {
 }
 
 .filter-tab {
-  border: 1px solid var(--line);
+  border: 1px solid #c7c4ba;
   background: transparent;
   padding: 10px 16px;
 
@@ -593,8 +648,14 @@ button {
   content: "";
   flex: 1;
   height: 1px;
-  background: var(--line);
+  background: #c5c2b8;
 }
+
+
+/* =========================================================
+   DOCUMENT / WRITING SAMPLE CARDS
+   Dark Editorial Style
+   ========================================================= */
 
 .samples-grid {
   display: grid;
@@ -602,21 +663,23 @@ button {
   gap: 18px;
 }
 
-
-/* =========================================================
-   SAMPLE CARDS — ARTICLE / MAGAZINE FEEL
-   ========================================================= */
-
 .sample-card {
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  min-height: 250px;
-  padding: 28px;
+  min-height: 275px;
+  padding: 30px;
 
-  background: var(--white);
-  border: 1px solid var(--line);
+  background: #202520;
+  color: var(--white);
+
+  border: 1px solid #343b35;
+
+  box-shadow: 0 12px 30px rgba(20, 23, 20, 0.08);
 
   transition:
     transform 0.25s ease,
@@ -624,58 +687,115 @@ button {
     border-color 0.25s ease;
 }
 
-.sample-card:hover {
-  transform: translateY(-5px);
-  border-color: #c7c4b9;
-  box-shadow: var(--shadow);
+
+/* Subtle green editorial line */
+.sample-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: var(--green);
 }
 
+
+/* Small document label */
 .sample-card::before {
   content: "WRITING SAMPLE";
   display: block;
 
-  font-size: 10px;
+  width: fit-content;
+
+  padding: 5px 9px;
+
+  border: 1px solid #56625a;
+
+  font-family: var(--sans);
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 1.7px;
-  color: var(--green);
 
-  margin-bottom: 25px;
+  color: #b9c7bf;
+
+  margin-bottom: 27px;
 }
 
+
+/* Hover */
+.sample-card:hover {
+  transform: translateY(-7px);
+
+  border-color: #52665b;
+
+  box-shadow:
+    0 20px 45px rgba(20, 23, 20, 0.18);
+}
+
+
+/* Article title */
 .sample-card h4 {
   font-family: var(--serif);
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.27;
+
+  color: #fffefa;
+
+  max-width: 470px;
 }
 
+
+/* Description if present */
 .sample-card p {
-  color: var(--muted);
+  color: #aeb7b0;
   font-size: 13px;
-  margin-top: 12px;
+  line-height: 1.65;
+  margin-top: 13px;
 }
 
+
+/* Open sample link */
 .sample-card a {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 
-  margin-top: 25px;
+  width: fit-content;
 
-  color: var(--green);
-  font-size: 12px;
+  margin-top: 27px;
+
+  color: #b8d2c4;
+
+  font-size: 11px;
   font-weight: 700;
+
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
+
+  border-bottom: 1px solid #52665a;
+  padding-bottom: 5px;
+
+  transition: all 0.2s ease;
 }
 
 .sample-card a::after {
-  content: "→";
+  content: "↗";
+
+  font-size: 14px;
+
   transition: transform 0.2s ease;
 }
 
+.sample-card a:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
 .sample-card:hover a::after {
-  transform: translateX(4px);
+  transform: translate(3px, -2px);
 }
 
 
@@ -842,6 +962,7 @@ button {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
+
   transition:
     opacity 0.65s ease,
     transform 0.65s ease;
@@ -1011,7 +1132,12 @@ button {
   }
 
   .sample-card {
-    min-height: 220px;
+    min-height: 230px;
+    padding: 25px;
+  }
+
+  .sample-card h4 {
+    font-size: 23px;
   }
 
   .why-item {
@@ -1039,5 +1165,23 @@ button {
   .footer-inner {
     flex-direction: column;
     text-align: center;
+  }
+
+  /* Writer mark on small screens */
+  .hero-facts {
+    padding-top: 78px;
+  }
+
+  .hero-facts::before {
+    width: 54px;
+    height: 54px;
+    font-size: 23px;
+  }
+
+  .hero-facts::after {
+    left: 69px;
+    top: 20px;
+    font-size: 8px;
+    letter-spacing: 1.4px;
   }
 }
