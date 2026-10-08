@@ -60,6 +60,45 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", setHeaderShadow, { passive: true });
   setHeaderShadow();
 
+  /* ---------- Portfolio category filter tabs ---------- */
+  var filterTabs = document.querySelectorAll(".filter-tab");
+  var sampleGroups = document.querySelectorAll(".samples-group");
+
+  filterTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      var filter = tab.getAttribute("data-filter");
+      filterTabs.forEach(function (t) {
+        var active = t === tab;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      sampleGroups.forEach(function (group) {
+        var show = filter === "all" || group.getAttribute("data-group") === filter;
+        group.hidden = !show;
+        if (show) group.classList.add("is-visible");
+      });
+    });
+  });
+
+  /* ---------- Gentle scroll-reveal (skipped if the browser lacks support) ---------- */
+  var revealTargets = document.querySelectorAll(
+    ".section-label, .section-body, .timeline-item, .services-grid, .tools-grid, .samples-group, .filter-tabs, .why-list, .contact-inner"
+  );
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealTargets.forEach(function (el) {
+      el.classList.add("reveal");
+      observer.observe(el);
+    });
+  }
+
   /* ---------- Footer year ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) {
