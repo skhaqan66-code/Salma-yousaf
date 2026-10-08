@@ -551,10 +551,8 @@ p {
    PORTFOLIO
 ========================= */
 
-/* Soft sage background instead of plain white */
-
 #portfolio {
-  background: #e3e9e4;
+  background: #dfe6e1;
 }
 
 #portfolio .section-heading {
@@ -564,6 +562,7 @@ p {
 #portfolio .section-heading p {
   color: #59645e;
 }
+
 
 /* Portfolio filters */
 
@@ -576,8 +575,8 @@ p {
 
 .filter-tab {
   padding: 10px 16px;
-  border: 1px solid #bcc8c0;
-  background: transparent;
+  border: 1px solid #b9c7be;
+  background: rgba(247, 245, 239, 0.45);
   color: var(--ink-soft);
   font-family: "Inter", sans-serif;
   font-size: 11px;
@@ -630,13 +629,11 @@ p {
   gap: 18px;
 }
 
-/* Light document / paper cards */
-
 .sample-card {
   position: relative;
   background: #f7f5ef;
-  border: 1px solid #c9d3cc;
-  border-radius: 14px;
+  border: 1px solid #c7d0ca;
+  border-radius: 12px;
   padding: 28px;
   min-height: 210px;
   display: flex;
@@ -648,8 +645,6 @@ p {
     box-shadow 0.25s ease,
     border-color 0.25s ease;
 }
-
-/* Green editorial line */
 
 .sample-card::before {
   content: "";
@@ -697,9 +692,6 @@ p {
 .sample-card a:hover {
   color: var(--green-dark);
 }
-
-
-/* Small sample label */
 
 .sample-card::after {
   content: "WRITING SAMPLE";
